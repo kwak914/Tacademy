@@ -1,0 +1,24 @@
+{
+  "name": "Data Development",
+  "value": 60,
+  "children": [
+    {
+      "name": "Data Visualization",
+      "value": 40,
+      "children": [
+        {"name": "D3.js", "value": 10},
+        {"name": "Dimple.js", "value": 9},
+        {"name": "matplotlib(python)", "value": 8},
+        {"name": "ggplot(R)", "value": 7}
+      ]
+    },
+    {
+      "name": "Data Analysis",
+      "value": 20,
+      "children": [
+        {"name": "numpy", "value": 9},
+        {"name": "scikit-learn", "value": 8}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<style>
+
+svg {
+  width : 350px; height : 240px; border: 3px solid black;
+}
+.bar {
+      fill: orange;
+}
+.barNum {
+  font-size: 9pt;
+  text-anchor : middle;
+}
+.axis text {
+  font-size: 11px;
+
+}
+<!-- 눈금 표시 -->
+.axis path,
+.axis line {
+  fill :none;
+  stroke : black;
+}
+
+.axis_x line {
+  fill : nome;
+  stroke: black;
+}
+.barName {
+  font-size : 9pt;
+  text-anchor : middle;
+}
+
+</style>
+
+<script type="text/JavaScript" src="d3.min.js"></script>
+<body>
+  <h1> 세로형 막대그래프 표시 </h1>
+  <svg id = "myGraph"></svg>
+  <script type="text/JavaScript" src="example2.js"></script>
+
+
+
+</body>
+</html>

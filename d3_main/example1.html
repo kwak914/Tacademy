@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+ <html>
+ <head>
+ <script src='./d3.min.js'></script>
+<!--<script src='d3.min.js'></script>-->
+ </head>
+
+<style>
+ div.bar {
+     display: inline-block;
+     width: 20px;
+     height: 75px;   /* We'll override this later */
+     background-color: teal;
+  margin-right: 2px;
+ }
+ </style>
+
+<div id="test_02"></div>
+ <script>
+ var dataset = ["IoT", "Deep", "VRAR", "Mbed"] ;
+ d3.select('#test_02').selectAll('li')
+   .data(dataset)
+   .enter()
+   .append('li')
+   .text(function(d) { return d; });
+ </script>
+
+
+ <div id="test_03"></div>
+ <script>
+ var dataset = [50, 40, 70, 30, 60, 80, 120, 100];
+ d3.select('#test_03').selectAll('div')
+   .data(dataset)
+   .enter()
+   .append('div')
+   .attr('class', 'bar')
+   .style('height', function(d) {
+     return d + 'px';
+   });
+ </script>
+
+</html>

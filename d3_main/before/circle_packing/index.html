@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <title>Gapminder Clone</title>
+    <!-- Bootstrap -->
+    <!-- Custom styling -->
+</head>
+
+
+<body>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+var width = 800, height = 600;
+
+var chart = d3.select("body").append("svg")
+	.attr("width", width).attr("height", height)
+  .append("g")
+  	.attr("transform", "translate(50,50)");
+
+var pack = d3.layout.pack()
+	.size([width, height - 50])
+
+d3.json("knowledgedomainscore.json", function(data) {
+
+  var nodes = pack.nodes(data);
+  console.log(data)
+//  console.log(nodes)
+// . ==>  클래스 선언
+  var node = chart.selectAll()
+  	  .data(nodes).enter()
+  	.append("g")
+  	  .attr("class", "node")
+  	  .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
+
+  node.append("circle")
+  	  .attr("r",function(d) { return d.r; })
+  	  .attr("fill", "steelblue")
+  	  .attr("opacity", 0.25)
+  	  .attr("stroke", "#ADADAD")
+  	  .attr("stroke-width", 2);
+
+  node.append("text")
+
+      .style("text-anchor","middle")
+  	  .text(function(d) { return d.children ? "" : d.name; });
+});
+
+</script>
+</body>
