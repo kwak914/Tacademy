@@ -1,7 +1,6 @@
 /*
 *    main.js
-*    Mastering Data Visualization with D3.js
-*    Project 2 - Gapminder Clone
+*    Gapminder Clone
 */
 
 var margin = { left:80, right:20, top:10, bottom:100 };
@@ -75,10 +74,6 @@ d3.json("data/mean.json", function(data){
     // Clean data
     const formattedData = data.map(function(year){
         return year["countries"].map(function(country){
-            country.income = +country.income;
-            country.life_exp = +country.life_exp;
-//            country.population = +country.population
-//            console.log(country);
             return country;
 
         })
@@ -101,25 +96,11 @@ function update(data) {
     var t = d3.transition()
         .duration(100);
 
-  //  console.log(data);
     // JOIN new data with old elements.
     var circles = g.selectAll("circle").data(data, function(d){
-  //      console.log(d.country);
-        //console.log(d.country);
+
         return d.country;
     });
-    console.log(circles)
-  //  console.log(data)
-    var texts = g.selectAll(".enter_text").data(data, function(d){
-      //console.log(d)
-//      console.log(d.country)
-      console.log(d)
-      //;console.log(d)
-      return d.country;
-    });
-    console.log(texts)
-    //console.log(texts)
-    // EXIT old elements not present in new data.
 
     // ENTER new elements present in new data.
     circles.enter()
@@ -131,22 +112,6 @@ function update(data) {
             .attr("cy", function(d){ return y(d.life_exp); })
             .attr("cx", function(d){ return x(d.income) })
             .attr("r", function(d){ return Math.sqrt(area(d.population*25) / Math.PI) });
-    texts.enter()
-      .append("text")
-      .attr("class","enter_text")
-      .attr("font-size", "15px")
-      .merge(texts)
-      .transition(t)
-        .attr("x", function(d){
-
-          return x(d.income-125);
-        })
-        .attr("y", function(d){
-          return y(d.life_exp+5);
-        })
-      .text(function(d,i){
-        return ((d.continent));
-      });
 
     // Update the time label
     timeLabel.text(+(time + 1800))

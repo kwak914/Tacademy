@@ -22,7 +22,6 @@ var pack = d3.layout.pack()
 	.size([width, height - 50])
 
 d3.json("knowledgedomainscore.json", function(data) {
-
   var nodes = pack.nodes(data);
   console.log(data)
 //  console.log(nodes)

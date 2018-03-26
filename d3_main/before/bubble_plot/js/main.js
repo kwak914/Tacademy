@@ -7,6 +7,8 @@ var margin = { left:80, right:20, top:50, bottom:100 };
 var height = 500 - margin.top - margin.bottom,
     width = 800 - margin.left - margin.right;
 
+
+//this is g
 var g = d3.select("#chart-area")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -25,7 +27,9 @@ var colors = {
 };
 
 
-// 각 색깔이 어떤 continent 에 속하는지 실습
+// 각 색깔이 어떤 continent 에 속하는지 실습 //
+
+
 
 // Scales
 var x = d3.scaleLog()
@@ -63,8 +67,6 @@ var timeLabel = g.append("text")
     .text("1800");
 
 
-
-
 // X Axis
 var xAxisCall = d3.axisBottom(x)
     .tickValues([400, 4000, 40000])
@@ -88,6 +90,7 @@ d3.json("data/data_full.json", function(data){
     // Clean data
 
     const formattedData = data.map(function(year){
+        //console.log(year)
         return year["countries"].map(function(country){
             return country;
         })
@@ -98,7 +101,7 @@ d3.json("data/data_full.json", function(data){
         // At the end of our data, loop back
         time = (time < 214) ? time+1 : 0
         update(formattedData[time]);
-    }, 500)
+    }, 100)
 
     // First run of the visualization
     update(formattedData[0]);
@@ -107,7 +110,7 @@ d3.json("data/data_full.json", function(data){
 function update(data) {
     // Standard transition time for the visualization
     var t = d3.transition()
-        .duration(500)
+        .duration(100)
 
     // JOIN new data with old elements.
     var circles = g.selectAll("circle").data(data, function(d){
@@ -120,7 +123,8 @@ function update(data) {
 
     // ENTER new elements present in new data.
     circles.enter()
-
+    // place to update //
+    
     // Update the time label
     timeLabel.text(+(time + 1800))
 }

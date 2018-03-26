@@ -110,7 +110,7 @@ d3.json("data/data_full.json", function(data){
         // At the end of our data, loop back
         time = (time < 214) ? time+1 : 0
         update(formattedData[time]);
-    }, 500)
+    }, 100)
 
     // First run of the visualization
     update(formattedData[0]);
@@ -118,7 +118,7 @@ d3.json("data/data_full.json", function(data){
 function update(data) {
     // Standard transition time for the visualization
     var t = d3.transition()
-        .duration(500)
+        .duration(100)
 
     // JOIN new data with old elements.
     var circles = g.selectAll("circle").data(data, function(d){

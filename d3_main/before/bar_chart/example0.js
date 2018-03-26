@@ -9,12 +9,15 @@ barElements = d3.select("#myGraph")
               .data(dataSet)
 
     barElements.enter()
-        .append("rect")
-        .attr("class","bar")
 
 //        .exit()
-    barElements.enter()
-        .append("text")
-        .attr("class","barNum")
+textElements = d3.select("#myGraph")
+              .selectAll("#barNum")
+              .data(dataSet)
+
+
+
+
+
 
 //        .exit()

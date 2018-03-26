@@ -37,6 +37,7 @@ d3.select("#myGraph").append("g") // 눈금은 g 요소를 사용하여 그룹
 //그래프 그리기
 barElements = d3.select("#myGraph")
               .selectAll("rect")
+
               .data(dataSet)
 
     barElements.enter()
@@ -55,7 +56,10 @@ barElements = d3.select("#myGraph")
           return svgHeight - d - offsetY; //updated offsetY
         })
 //        .exit()
-    barElements.enter()
+textElements = d3.select("#myGraph")
+                  .selectAll("#barNum")
+                  .data(dataSet)
+    textElements.enter()
         .append("text")
         .attr("class","barNum")
         .attr("x", function(d, i){
@@ -73,7 +77,11 @@ d3.select("#myGraph").append("rect")
           .attr("width", 320)
           .attr("height", 1)
           .attr("transform", "translate("+offsetX + ", "+((svgHeight)-offsetY)+")")
-barElements.enter()
+
+xElements = d3.select("#myGraph")
+            .selectAll("#barName")
+            .data(dataSet)
+xElements.enter()
           .append("text")
           .attr("class","barName")
           .attr("x", function(d, i){
