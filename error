@@ -1,0 +1,10 @@
+저도 같은 에러가 나서 방금 고쳤는데 window hostname이 한글이라서 그렇더라고요.
+
+cmd창 관리자 권한으로 실행해서
+
+wmic ComputerSystem Where Name=%COMPUTERNAME% Call Rename Name=원하시는 호스트명 영어로
+
+입력하신 다음에 재부팅하시면 될 거에요!
+
+
+https://programmers.co.kr/learn/questions/478
